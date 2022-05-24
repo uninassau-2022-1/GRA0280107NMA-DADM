@@ -1,0 +1,385 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2.0.0",
+    "title": "Urna 2022 API",
+    "description": "Urna eletrônica - #SeuVotoFazOPais",
+    "contact": {
+      "email": "storeexodia@gmail.com"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/urna",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/createCandidato": {
+      "post": {
+        "tags": [
+          "Candidatos"
+        ],
+        "summary": "Cadastra um novo candidato no banco de dados.",
+        "description": "Essa rota é responsável por cadastrar um novo candidato.",
+        "parameters": [
+          {
+            "name": "dados do candidato",
+            "in": "body",
+            "description": "Informações do candidato.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Candidato"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/getCandidato": {
+      "get": {
+        "tags": [
+          "Candidatos"
+        ],
+        "summary": "Retorna um candidato cadastrado, pelo seu número.",
+        "description": "Retorna todos os candidatos cadastrados.",
+        "parameters": [
+          {
+            "name": "numero",
+            "description": "Número do candidato.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/getAllCandidatos": {
+      "get": {
+        "tags": [
+          "Candidatos"
+        ],
+        "summary": "Retorna todos os candidatos cadastrados.",
+        "description": "Retorna todos os candidatos cadastrados.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/updateCandidatos/{numero}": {
+      "put": {
+        "tags": [
+          "Candidatos"
+        ],
+        "summary": "Atualiza informações de um candidato.",
+        "description": "Atualiza as informações do candidato, localizando-o através de seu número, repassando os dados necessários. ",
+        "parameters": [
+          {
+            "name": "numero",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Número do candidato."
+          },
+          {
+            "name": "dados atualizados",
+            "in": "body",
+            "description": "candidato atualizado.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Candidato"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/deleteCandidato": {
+      "delete": {
+        "tags": [
+          "Candidatos"
+        ],
+        "summary": "Deleta o candidato cadastrado com o número passado como parâmetro.",
+        "description": "Deleta o candidato cadastrado com o número passado como parâmetro.",
+        "parameters": [
+          {
+            "name": "numero",
+            "description": "Número do candidato.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/createEleitor": {
+      "post": {
+        "tags": [
+          "Eleitores"
+        ],
+        "summary": "Cadastra um novo eleitor no banco de dados.",
+        "description": "Cadastra um novo eleitor no banco de dados.",
+        "parameters": [
+          {
+            "name": "dados do eleitor",
+            "in": "body",
+            "description": "dados do eleitor.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Eleitor"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/authentication": {
+      "post": {
+        "tags": [
+          "Eleitores"
+        ],
+        "summary": "Autentica o eleitor no banco de dados.",
+        "description": "Autentica o eleitor no banco de dados.",
+        "parameters": [
+          {
+            "name": "dados do eleitor",
+            "in": "body",
+            "description": "dados do eleitor.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Credencial"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/getEleitor": {
+      "get": {
+        "tags": [
+          "Eleitores"
+        ],
+        "summary": "Retorna um eleitor cadastrado usando seu cpf.",
+        "description": "Retorna um eleitor cadastrado usando seu cpf",
+        "parameters": [
+          {
+            "name": "cpf",
+            "description": "Número de cpf do eleitor.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/getAllEleitores": {
+      "get": {
+        "tags": [
+          "Eleitores"
+        ],
+        "summary": "Retorna todos os eleitores cadastrados.",
+        "description": "Retorna todos os eleitores cadastrados.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/silenceAndWork": {
+      "get": {
+        "tags": [
+          "Eleitores"
+        ],
+        "summary": "Silêncio e Trabalho",
+        "description": "🤫 & 💼",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/updateEleitor/{cpf}": {
+      "put": {
+        "tags": [
+          "Eleitores"
+        ],
+        "summary": "Atualiza informações de um eleitor.",
+        "description": "Atualiza as informações do eleitor, localizando-o através de seu número, repassando os dados necessários. ",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Número de cpf do eleitor."
+          },
+          {
+            "name": "dados atualizados",
+            "in": "body",
+            "description": "eleitor atualizado.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Eleitor"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/deleteEleitor": {
+      "delete": {
+        "tags": [
+          "Eleitores"
+        ],
+        "summary": "Deleta um eleitor cadastrado, através de seu número de eleitor.",
+        "description": "Deleta um eleitor cadastrado, através de seu número de cpf.",
+        "parameters": [
+          {
+            "name": "cpf",
+            "description": "Número de cpf do eleitor.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Candidato": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "example": "José Mário"
+        },
+        "vice": {
+          "type": "string",
+          "example": "Arlindo Correa"
+        },
+        "partido": {
+          "type": "string",
+          "example": "Delas"
+        },
+        "numero": {
+          "type": "string",
+          "example": "68"
+        },
+        "votos": {
+          "type": "number",
+          "example": 0
+        }
+      }
+    },
+    "Eleitor": {
+      "type": "object",
+      "properties": {
+        "nome": {
+          "type": "string",
+          "example": "Leopoldo França"
+        },
+        "cpf": {
+          "type": "string",
+          "example": "12332134404"
+        },
+        "estado": {
+          "type": "string",
+          "example": "PE"
+        },
+        "cidade": {
+          "type": "string",
+          "example": "Serra Talhada"
+        },
+        "bairro": {
+          "type": "string",
+          "example": "Centro"
+        },
+        "email": {
+          "type": "string",
+          "example": "leozinho@gmail.com"
+        },
+        "dataNascimento": {
+          "type": "string",
+          "example": "16/05/2000"
+        },
+        "zona": {
+          "type": "string",
+          "example": "066"
+        },
+        "secao": {
+          "type": "string",
+          "example": "0384"
+        },
+        "numeroInscricao": {
+          "type": "string",
+          "example": "123456789101"
+        },
+        "counter": {
+          "type": "string",
+          "example": "5555"
+        }
+      }
+    },
+    "Credencial": {
+      "type": "object",
+      "properties": {
+        "cpf": {
+          "type": "string",
+          "example": "12332134404"
+        },
+        "counter": {
+          "type": "string",
+          "example": "5555"
+        }
+      }
+    }
+  }
+}
