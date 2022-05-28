@@ -15,6 +15,25 @@
 - API REST com Express.
 - Testes unitários com Jest.
 
+## Sumário 📒: 
+
+- [Documentação](#documentação-)
+
+- [Candidatos](#candidatos-)
+
+     - [POST](#post---candidatos)
+     - [GET](#get---candidatos)
+     - [DELETE](#delete---candidatos)
+     - [PUT](#put---candidatos)
+
+- [Eleitores](#eleitores-)
+
+     - [POST](#post---eleitores)
+     - [GET](#get---eleitores)
+     - [DELETE](#delete---eleitores)
+     - [PUT](#put---eleitores)
+
+
 ## Documentação 📃:
 
 ![thumb](./doc/images/Urna-Thumb.png)
@@ -45,23 +64,23 @@ npm start
 ## Rotas 🌐:
 
 ## Candidatos 🧑‍💼
-
-### POST 🟩
+### **[⬆ VOLTAR AO SUMÁRIO](#sumário-)**
+### POST - Candidatos🟩
 #### **Cadastrar Candidato** : http://localhost:8080/urna/createCandidato 
 ![Post-img](./doc/images/Candidatos/Post-Candidatos.png)
 - Recebe um `json` para inserção dos dados. Dentro da aplicação recebe um objeto javascript que é convertido automaticamente para `json`
 - Cadastra os candidatos com as informações fornecidas. Por padrão o `schema` passado é: 
 ```javascript  
 {
-    nome: String,
-    vice: String,
-    partido: String,
-    numero: String,
-    votos: Number
+    nome: { type: String, required: true },
+    vice: { type: String, required: true },
+    partido: { type: String, required: true },
+    numero: { type: String, required: true },
+    votos: { type: Number, required: true },
 }
 ``` 
 
-### GET 🟦
+### GET - Candidatos🟦
 #### **Retorna todos os candidatos cadastrados**: http://localhost:8080/urna/getAllCandidatos
 ![GetAll-img](./doc/images/Candidatos/GetAll-Candidatos.png)
 - Retorna todos os candidatos que estiverem cadastrados no banco de dados. Retorna um `json` que é convertido para um objeto Javascript como no exemplo abaixo: 
@@ -78,7 +97,7 @@ npm start
 -  O retorno é similar ao da rota anterior, porém retorna apenas o objeto que tiver o mesmo número solicitado.
 ![GetCandidato-img](./doc/images/Candidatos/GetOne-Candidatos.png)
 
-### DELETE 🟥
+### DELETE - Candidatos🟥
 #### **Deletar Candidato** : http://localhost:8080/urna/deleteCandidato
 ![Delete-Img](./doc/images/Candidatos/Delete-Candidatos.png)
 - Remove um acolhido do banco de dados, localizando ele com sua matrícula. Essa rota retorna um `json` com duas informações. Se o objeto foi reconhecido na busca, que retorna `true` para localizado e `false` para não localizado, e retorna também um contador informando se ele foi deletado ou não, sendo `0` para não deletado e `1` para deletado. 
@@ -89,14 +108,14 @@ npm start
 }
 ```
 
-### PUT 🟨
+### PUT - Candidatos🟨
 #### **Atualizar informações do candidato** : http://localhost:8080/urna/updateCandidatos/:numero
 ![Update-Img](./doc/images/Candidatos/Put-Candidatos.png)
 - Atualiza as informações do candidato. Localizando ele através de seu número e passando os dados a serem atualizados. Similar ao cadastro, porém precisando localizar o acolhido. 
 
 ## Eleitores 👨‍🦱
-
-### POST 🟩
+### **[⬆ VOLTAR AO SUMÁRIO](#sumário-)**
+### POST - Eleitores🟩
 #### **Cadastrar eleitor** : http://localhost:8080/urna/createEleitor
 ![Post-img](./doc/images/Eleitores/Post-Eleitores.png)
 
@@ -105,18 +124,18 @@ npm start
 - Cadastra o eleitor com as informações fornecidas. Por padrão o `schema` passado é: 
 ```javascript
 {
-    nome: String,
-    cpf: String,
-    estado: String,
-    cidade: String,
-    bairro: String,
-    email: String,
-    dataNascimento: String,
-    zona: String,
-    secao: String, 
-    numeroInscricao: String,
-    counter: String,
-    nice: String
+    nome: { type: String, required: true },
+    cpf: { type: String, required: true },
+    estado: { type: String, required: true },
+    cidade: { type: String, required: true },
+    bairro: { type: String, required: true },
+    email: { type: String, required: true },
+    dataNascimento: { type: String, required: true },
+    zona: { type: String, required: true },
+    secao: { type: String, required: true },
+    numeroInscricao: { type: String, required: true },
+    counter: { type: String, required: true },
+    nice: { type: String, required: true },
 }
 ```
 #### **Validar credencial** : http://localhost:8080/urna/authentication
@@ -124,7 +143,7 @@ npm start
 
 - Recebe o login e a senha passada pelo usuário e faz a validação se está correto retornando ```{ valido: true }``` caso a credencial esteja correta ou ```{ valido: false }``` para incorreta.
 
-### GET 🟦
+### GET - Eleitores🟦
 #### **Retorna todos os eleitores cadastrados**: http://localhost:8080/urna/getAllEleitores
 ![GetAll-img](./doc/images/Eleitores/GetAll-Eleitores.png)
 - Retorna todos os eleitores que estiverem cadastrados no banco de dados. Retorna um `json` que é convertido para um objeto Javascript como no exemplo abaixo: 
@@ -150,7 +169,7 @@ npm start
 -  O retorno é similar ao da rota anterior, porém retorna apenas o objeto que tiver o mesmo número de inscrição solicitado.
 ![GetOne-img](./doc/images/Eleitores/GetOne-Eleitores.png)
 
-### DELETE 🟥
+### DELETE - Eleitores🟥
 #### **Deletar Eleitor** : http://localhost:8080/urna/deleteEleitor
 ![Delete-Img](./doc/images/Eleitores/Delete-Eleitores.png)
 - Remove um eleitor do banco de dados, localizando-a com seu número de inscrição. Essa rota retorna um `json` com duas informações. Se o objeto foi reconhecido na busca, que retorna `true` para localizado e `false` para não localizado, e retorna também um contador informando se ele foi deletado ou não, sendo `0` para não deletado e `1` para deletado. 
@@ -160,7 +179,7 @@ npm start
   "deletedCount": 1
 }
 ```
-### PUT 🟨
+### PUT - Eleitores🟨
 #### **Atualizar informações do acolhido** : http://localhost:8080/urna/updateEleitor/:numeroInscricao
 ![Update-Img](./doc/images/Eleitores/Put-Eleitores.png)
 - Atualiza as informações de um eleitor. Localizando-a através de seu número de inscrição e passando os dados a serem atualizados. Similar ao cadastro, porém precisando localizar o eleitor. 
@@ -172,6 +191,7 @@ npm start
 ![Silencio&Trabalho](./doc/images/Eleitores/Silencio&Trabalho.png)
 - Silêncio e Trabalho. 🤫 & 💼
 
+### **[⬆ VOLTAR AO SUMÁRIO](#sumário-)**
 ### Suporte 🆘
 
 #### Em casos de dúvidas ou sugestôes entrar em contato com o time exódia através do nosso [email](mailto:storeexodia@gmail.com)!
