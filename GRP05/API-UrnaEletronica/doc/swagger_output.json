@@ -82,6 +82,67 @@
         }
       }
     },
+    "/atualizarVoto/{numero}": {
+      "get": {
+        "tags": [
+          "Candidatos"
+        ],
+        "summary": "Atualiza o voto do candidato.",
+        "description": "Atualiza o voto do candidato.",
+        "parameters": [
+          {
+            "name": "numero",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Número do candidato."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/getVoto/{numero}": {
+      "get": {
+        "tags": [
+          "Candidatos"
+        ],
+        "summary": "Votos do candidato.",
+        "description": "Votos do candidato.",
+        "parameters": [
+          {
+            "name": "numero",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Votos do candidato ."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/getAllVotos": {
+      "get": {
+        "tags": [
+          "Candidatos"
+        ],
+        "summary": "Retorna todos os votos.",
+        "description": "Retorna todos os votos.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/updateCandidatos/{numero}": {
       "put": {
         "tags": [
@@ -330,6 +391,10 @@
           "type": "string",
           "example": "12332134404"
         },
+        "senha": {
+          "type": "string",
+          "example": "123456"
+        },
         "estado": {
           "type": "string",
           "example": "PE"
@@ -355,9 +420,9 @@
           "type": "string",
           "example": "12332134404"
         },
-        "counter": {
+        "senha": {
           "type": "string",
-          "example": "5555"
+          "example": "123456"
         }
       }
     }
