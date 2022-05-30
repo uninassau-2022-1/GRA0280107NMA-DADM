@@ -1,0 +1,7 @@
+{
+  "name": "urna",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

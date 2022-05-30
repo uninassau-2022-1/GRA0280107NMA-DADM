@@ -1,0 +1,78 @@
+<ion-header [translucent]="false">
+
+</ion-header>
+<ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+      <a routerLink="/candidatos"><img class="botao-img" src="../../assets/img/BotaoVoltar.png"/></a>
+      <div>
+        <ion-img class="gov" src="../../assets/img/gov.br.png"></ion-img>
+      </div>
+      <ion-item-divider class="line"></ion-item-divider>
+  </ion-header>
+
+  <ion-card class="card-candidate">
+    <img class="foto-candidate" src="../../assets/img/user.png" />
+    <ion-card-header>
+      <ion-card-title class="titulo"> <span class="numero">{{ getNumero() || getBranco()}}</span> <span></span> </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-grid class="teclado">
+    <ion-row>
+      <ion-col size="4">
+        <ion-button (click)="setValue('1')" class="botao-voto">1</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button (click)="setValue('2')" class="botao-voto">2</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button (click)="setValue('3')" class="botao-voto">3</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <ion-button (click)="setValue('4')" class="botao-voto">4</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button (click)="setValue('5')" class="botao-voto">5</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button (click)="setValue('6')" class="botao-voto">6</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <ion-button (click)="setValue('7')" class="botao-voto">7</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button (click)="setValue('8')" class="botao-voto">8</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button (click)="setValue('9')" class="botao-voto">9</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <ion-button style="visibility:hidden"></ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button (click)="setValue('0')" value="0" class="botao-voto">0</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button style="visibility:hidden"></ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <ion-button class="botao-branco" (click)="setBranco('BRANCO')">BRANCO</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button (click)="corrige()" class="botao-corrige">CORRIGE</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button routerLink="/fim-votacao" (click)="atualizarVoto()" class="botao-confirma">CONFIRMA</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
